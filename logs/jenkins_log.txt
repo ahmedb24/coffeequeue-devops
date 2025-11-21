@@ -1,0 +1,656 @@
+Started by user Admin
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/caches/git-faa89ce0c45a68419b0768a0d8640710/.git # timeout=10
+Setting origin to file:///home/jenkins-user/coffeequeue-devops
+ > git config remote.origin.url file:///home/jenkins-user/coffeequeue-devops # timeout=10
+Fetching origin...
+Fetching upstream changes from origin
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git config --get remote.origin.url # timeout=10
+ > git fetch --no-tags --force --progress -- origin +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/main
+Seen branch in repository origin/master
+Seen 2 remote branches
+Obtained Jenkinsfile from 78dcd2fa1e74f8167ac9718fb1dd4ae40edf8eaf
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/COFFEEQUEUE_main
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning with configured refspecs honoured and without tags
+Cloning repository file:///home/jenkins-user/coffeequeue-devops
+ > git init /var/lib/jenkins/workspace/COFFEEQUEUE_main # timeout=10
+Fetching upstream changes from file:///home/jenkins-user/coffeequeue-devops
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --no-tags --force --progress -- file:///home/jenkins-user/coffeequeue-devops +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url file:///home/jenkins-user/coffeequeue-devops # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Checking out Revision 78dcd2fa1e74f8167ac9718fb1dd4ae40edf8eaf (main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 78dcd2fa1e74f8167ac9718fb1dd4ae40edf8eaf # timeout=10
+Commit message: "feat: WIP"
+ > git rev-list --no-walk 2ec660c34fdeae7d2d8c88e2bde97e12cff0ca6b # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Git Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+Warning: CredentialId "git-cred" could not be found.
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/COFFEEQUEUE_main/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url file:///home/jenkins-user/coffeequeue-devops # timeout=10
+Fetching upstream changes from file:///home/jenkins-user/coffeequeue-devops
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- file:///home/jenkins-user/coffeequeue-devops +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 78dcd2fa1e74f8167ac9718fb1dd4ae40edf8eaf (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 78dcd2fa1e74f8167ac9718fb1dd4ae40edf8eaf # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b main 78dcd2fa1e74f8167ac9718fb1dd4ae40edf8eaf # timeout=10
+Commit message: "feat: WIP"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Compile)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ cd coffeequeue
++ mvn compile
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< com.strartalyze:coffeequeue >---------------------
+[INFO] Building coffeequeue 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ coffeequeue ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ coffeequeue ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 6 source files with javac [debug parameters release 21] to target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.504 s
+[INFO] Finished at: 2025-11-21T21:08:29Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ cd coffeequeue
++ mvn test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< com.strartalyze:coffeequeue >---------------------
+[INFO] Building coffeequeue 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ coffeequeue ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ coffeequeue ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ coffeequeue ---
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/COFFEEQUEUE_main/coffeequeue/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ coffeequeue ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ coffeequeue ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.006 s
+[INFO] Finished at: 2025-11-21T21:08:33Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (File System Scan)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ trivy fs --format table --output trivy-fs-report.html .
+2025-11-21T21:08:33Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-11-21T21:08:33Z	INFO	[secret] Secret scanning is enabled
+2025-11-21T21:08:33Z	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2025-11-21T21:08:33Z	INFO	[secret] Please see https://trivy.dev/v0.67/docs/scanner/secret#recommendation for faster secret detection
+2025-11-21T21:08:34Z	INFO	Number of language-specific files	num=1
+2025-11-21T21:08:34Z	INFO	[pom] Detecting vulnerabilities...
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analsyis)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: sonar
+[Pipeline] {
+[Pipeline] sh
++ /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/bin/sonar-scanner -Dsonar.projectName=CoffeeQueue -Dsonar.projectKey=CoffeeQueue -Dsonar.java.binaries=.
+21:08:35.500 INFO  Scanner configuration file: /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/conf/sonar-scanner.properties
+21:08:35.506 INFO  Project root configuration file: NONE
+21:08:35.526 INFO  SonarScanner CLI 7.3.0.5189
+21:08:35.532 INFO  Linux 5.15.0-161-generic amd64
+21:08:39.679 INFO  Communicating with SonarQube Server 9.9.8.100196
+21:08:40.340 INFO  Load global settings
+21:08:40.443 INFO  Load global settings (done) | time=104ms
+21:08:40.445 INFO  Server id: 147B411E-AZqOveuUTkRSOWmYOm_M
+21:08:40.451 INFO  User cache: /var/lib/jenkins/.sonar/cache
+21:08:40.456 INFO  Load/download plugins
+21:08:40.456 INFO  Load plugins index
+21:08:40.504 INFO  Load plugins index (done) | time=48ms
+21:08:40.636 INFO  Load/download plugins (done) | time=180ms
+21:08:41.258 INFO  Process project properties
+21:08:41.258 INFO  Process project properties (done) | time=0ms
+21:08:41.264 INFO  Execute project builders
+21:08:41.266 INFO  Execute project builders (done) | time=2ms
+21:08:41.270 INFO  Project key: CoffeeQueue
+21:08:41.270 INFO  Base dir: /var/lib/jenkins/workspace/COFFEEQUEUE_main
+21:08:41.270 INFO  Working dir: /var/lib/jenkins/workspace/COFFEEQUEUE_main/.scannerwork
+21:08:41.283 INFO  Load project settings for component key: 'CoffeeQueue'
+21:08:41.301 INFO  Load project settings for component key: 'CoffeeQueue' (done) | time=17ms
+21:08:41.535 INFO  Auto-configuring with CI 'Jenkins'
+21:08:41.540 INFO  Load quality profiles
+21:08:41.637 INFO  Load quality profiles (done) | time=97ms
+21:08:41.652 INFO  Load active rules
+21:08:43.312 INFO  Load active rules (done) | time=1660ms
+21:08:43.318 INFO  Load analysis cache
+21:08:43.330 INFO  Load analysis cache (345 bytes) | time=12ms
+21:08:43.397 INFO  Load project repositories
+21:08:43.414 INFO  Load project repositories (done) | time=16ms
+21:08:43.454 INFO  Indexing files...
+21:08:43.454 INFO  Project configuration:
+21:08:43.658 WARN  File '/var/lib/jenkins/workspace/COFFEEQUEUE_main/scripts/kubectl' is bigger than 20MB and as consequence is removed from the analysis scope.
+21:08:43.665 INFO  49 files indexed
+21:08:43.665 INFO  12 files ignored because of scm ignore settings
+21:08:43.666 INFO  Quality profile for java: Sonar way
+21:08:43.666 INFO  Quality profile for json: Sonar way
+21:08:43.666 INFO  Quality profile for web: Sonar way
+21:08:43.666 INFO  Quality profile for xml: Sonar way
+21:08:43.666 INFO  Quality profile for yaml: Sonar way
+21:08:43.667 INFO  ------------- Run sensors on module CoffeeQueue
+21:08:43.775 INFO  Load metrics repository
+21:08:43.799 INFO  Load metrics repository (done) | time=24ms
+21:08:45.621 INFO  Sensor JavaSensor [java]
+21:08:45.628 INFO  Configured Java source version (sonar.java.source): none
+21:08:45.632 INFO  JavaClasspath initialization
+21:08:45.634 INFO  JavaClasspath initialization (done) | time=2ms
+21:08:45.634 INFO  JavaTestClasspath initialization
+21:08:45.634 INFO  JavaTestClasspath initialization (done) | time=0ms
+21:08:45.643 INFO  Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+21:08:45.646 INFO  Using ECJ batch to parse 7 Main java source files with batch size 102 KB.
+21:08:45.910 INFO  Starting batch processing.
+21:08:46.588 INFO  The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+21:08:47.249 INFO  100% analyzed
+21:08:47.249 INFO  Batch processing: Done.
+21:08:47.250 INFO  Did not optimize analysis for any files, performed a full analysis for all 7 files.
+21:08:47.251 WARN  Dependencies/libraries were not provided for analysis of SOURCE files. The 'sonar.java.libraries' property is empty. Verify your configuration, as you might end up with less precise results.
+21:08:47.252 WARN  Unresolved imports/types have been detected during analysis. Enable DEBUG mode to see them.
+21:08:47.252 WARN  Use of preview features have been detected during analysis. Enable DEBUG mode to see them.
+21:08:47.252 INFO  No "Test" source files to scan.
+21:08:47.252 INFO  No "Generated" source files to scan.
+21:08:47.252 INFO  Sensor JavaSensor [java] (done) | time=1632ms
+21:08:47.253 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+21:08:47.255 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+21:08:47.256 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+21:08:47.256 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=3ms
+21:08:47.256 INFO  Sensor IaC CloudFormation Sensor [iac]
+21:08:47.270 INFO  0 source files to be analyzed
+21:08:47.282 INFO  0/0 source files have been analyzed
+21:08:47.282 INFO  Sensor IaC CloudFormation Sensor [iac] (done) | time=26ms
+21:08:47.282 INFO  Sensor IaC Kubernetes Sensor [iac]
+21:08:47.286 INFO  3 source files to be analyzed
+21:08:47.371 INFO  3/3 source files have been analyzed
+21:08:47.372 INFO  Sensor IaC Kubernetes Sensor [iac] (done) | time=89ms
+21:08:47.372 INFO  Sensor JavaScript inside YAML analysis [javascript]
+21:08:47.377 INFO  No input files found for analysis
+21:08:47.378 INFO  Hit the cache for 0 out of 0
+21:08:47.379 INFO  Miss the cache for 0 out of 0
+21:08:47.379 INFO  Sensor JavaScript inside YAML analysis [javascript] (done) | time=7ms
+21:08:47.379 INFO  Sensor CSS Rules [javascript]
+21:08:49.076 WARN  Error when running: 'node -v'. Is Node.js available during analysis?
+21:08:49.077 INFO  Hit the cache for 0 out of 0
+21:08:49.077 INFO  Miss the cache for 0 out of 0
+21:08:49.077 INFO  Sensor CSS Rules [javascript] (done) | time=1698ms
+21:08:49.077 INFO  Sensor C# Project Type Information [csharp]
+21:08:49.078 INFO  Sensor C# Project Type Information [csharp] (done) | time=1ms
+21:08:49.078 INFO  Sensor C# Analysis Log [csharp]
+21:08:49.108 INFO  Sensor C# Analysis Log [csharp] (done) | time=30ms
+21:08:49.108 INFO  Sensor C# Properties [csharp]
+21:08:49.108 INFO  Sensor C# Properties [csharp] (done) | time=0ms
+21:08:49.108 INFO  Sensor SurefireSensor [java]
+21:08:49.109 INFO  parsing [/var/lib/jenkins/workspace/COFFEEQUEUE_main/target/surefire-reports]
+21:08:49.109 INFO  Sensor SurefireSensor [java] (done) | time=1ms
+21:08:49.109 INFO  Sensor HTML [web]
+21:08:49.150 INFO  Sensor HTML [web] (done) | time=41ms
+21:08:49.150 INFO  Sensor XML Sensor [xml]
+21:08:49.155 INFO  1 source file to be analyzed
+21:08:49.327 INFO  1/1 source file has been analyzed
+21:08:49.327 INFO  Sensor XML Sensor [xml] (done) | time=177ms
+21:08:49.328 INFO  Sensor TextAndSecretsSensor [text]
+21:08:49.335 INFO  16 source files to be analyzed
+21:08:49.360 INFO  16/16 source files have been analyzed
+21:08:49.360 INFO  Sensor TextAndSecretsSensor [text] (done) | time=32ms
+21:08:49.360 INFO  Sensor VB.NET Project Type Information [vbnet]
+21:08:49.361 INFO  Sensor VB.NET Project Type Information [vbnet] (done) | time=1ms
+21:08:49.361 INFO  Sensor VB.NET Analysis Log [vbnet]
+21:08:49.381 INFO  Sensor VB.NET Analysis Log [vbnet] (done) | time=20ms
+21:08:49.381 INFO  Sensor VB.NET Properties [vbnet]
+21:08:49.382 INFO  Sensor VB.NET Properties [vbnet] (done) | time=1ms
+21:08:49.382 INFO  Sensor IaC Docker Sensor [iac]
+21:08:49.383 INFO  2 source files to be analyzed
+21:08:49.451 INFO  2/2 source files have been analyzed
+21:08:49.451 INFO  Sensor IaC Docker Sensor [iac] (done) | time=69ms
+21:08:49.456 INFO  ------------- Run sensors on project
+21:08:49.518 INFO  Sensor Analysis Warnings import [csharp]
+21:08:49.519 INFO  Sensor Analysis Warnings import [csharp] (done) | time=1ms
+21:08:49.519 INFO  Sensor Zero Coverage Sensor
+21:08:49.526 INFO  Sensor Zero Coverage Sensor (done) | time=7ms
+21:08:49.526 INFO  Sensor Java CPD Block Indexer
+21:08:49.543 INFO  Sensor Java CPD Block Indexer (done) | time=17ms
+21:08:49.550 INFO  SCM Publisher SCM provider for this project is: git
+21:08:49.551 INFO  SCM Publisher 1 source file to be analyzed
+21:08:49.704 INFO  SCM Publisher 0/1 source files have been analyzed (done) | time=153ms
+21:08:49.705 WARN  Missing blame information for the following files:
+21:08:49.705 WARN    * trivy-fs-report.html
+21:08:49.705 WARN  This may lead to missing/broken features in SonarQube
+21:08:49.709 INFO  CPD Executor 3 files had no CPD blocks
+21:08:49.709 INFO  CPD Executor Calculating CPD for 5 files
+21:08:49.729 INFO  CPD Executor CPD calculation finished (done) | time=19ms
+21:08:49.804 INFO  Analysis report generated in 70ms, dir size=155.9 kB
+21:08:49.835 INFO  Analysis report compressed in 31ms, zip size=41.8 kB
+21:08:49.874 INFO  Analysis report uploaded in 37ms
+21:08:49.875 INFO  ANALYSIS SUCCESSFUL, you can find the results at: http://10.10.2.119:9000/dashboard?id=CoffeeQueue
+21:08:49.875 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+21:08:49.875 INFO  More about the report processing at http://10.10.2.119:9000/api/ce/task?id=AZqoP5I5-zQrQrT0AD8Q
+21:08:50.359 INFO  Analysis total time: 9.613 s
+21:08:50.360 INFO  EXECUTION SUCCESS
+21:08:50.361 INFO  Total time: 14.925s
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Quality Gate)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] waitForQualityGate
+Checking status of SonarQube task 'AZqoP5I5-zQrQrT0AD8Q' on server 'sonar'
+SonarQube task 'AZqoP5I5-zQrQrT0AD8Q' status is 'PENDING'
+SonarQube task 'AZqoP5I5-zQrQrT0AD8Q' status is 'SUCCESS'
+SonarQube task 'AZqoP5I5-zQrQrT0AD8Q' completed. Quality gate is 'ERROR'
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ cd coffeequeue
++ mvn package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< com.strartalyze:coffeequeue >---------------------
+[INFO] Building coffeequeue 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ coffeequeue ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ coffeequeue ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ coffeequeue ---
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/COFFEEQUEUE_main/coffeequeue/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ coffeequeue ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ coffeequeue ---
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ coffeequeue ---
+[INFO] Building jar: /var/lib/jenkins/workspace/COFFEEQUEUE_main/coffeequeue/target/coffeequeue-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.7:repackage (repackage) @ coffeequeue ---
+[INFO] Replacing main artifact /var/lib/jenkins/workspace/COFFEEQUEUE_main/coffeequeue/target/coffeequeue-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /var/lib/jenkins/workspace/COFFEEQUEUE_main/coffeequeue/target/coffeequeue-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.201 s
+[INFO] Finished at: 2025-11-21T21:08:59Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build & Tag Docker Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] withDockerRegistry
+Using the existing docker config file.
+Removing blacklisted property: auths
+$ docker login -u admin -p ******** http://10.10.2.119:8081
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+
+WARNING! Your credentials are stored unencrypted in '/var/lib/jenkins/workspace/COFFEEQUEUE_main@tmp/abfbd860-1cdf-42f5-adfb-5168e1326b9e/config.json'.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/go/credential-store/
+
+Login Succeeded
+[Pipeline] {
+[Pipeline] sh
++ docker build -t 10.10.2.119:8081/stratalyze/coffeequeue:latest .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 400B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#2 DONE 1.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/9] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:c4799f335a65b1ecca8a31239b05522f2b0a184d6818f6349e83484ee6956198
+#4 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:c4799f335a65b1ecca8a31239b05522f2b0a184d6818f6349e83484ee6956198 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 24.29kB done
+#5 DONE 0.0s
+
+#6 [3/9] COPY ./coffeequeue/mvnw .
+#6 CACHED
+
+#7 [2/9] WORKDIR /app
+#7 CACHED
+
+#8 [6/9] COPY ./coffeequeue/src src
+#8 CACHED
+
+#9 [4/9] COPY ./coffeequeue/.mvn .mvn
+#9 CACHED
+
+#10 [5/9] COPY ./coffeequeue/pom.xml .
+#10 CACHED
+
+#11 [7/9] COPY application.properties ./src/main/resources/application.properties
+#11 CACHED
+
+#12 [8/9] RUN chmod +x mvnw
+#12 CACHED
+
+#13 [9/9] RUN ./mvnw -q -DskipTests package
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:0bca3afced38a27b5596783f82bab9420ad65bdd712febfe50177137450d6100 done
+#14 exporting config sha256:e6a0d38453c2f7e064699bd9a6174858bbf993f7556ba9cfc205036aff06e91d done
+#14 exporting attestation manifest sha256:e63c88685b4fc4a9e1ab44b1f7eb970c3dce34a5f90ad73f2034ed761ca360f3
+#14 exporting attestation manifest sha256:e63c88685b4fc4a9e1ab44b1f7eb970c3dce34a5f90ad73f2034ed761ca360f3 0.0s done
+#14 exporting manifest list sha256:e361004ab366102521b62d91b555bf1ce68b16b65f2d410a13226929e93c1882 done
+#14 naming to 10.10.2.119:8081/stratalyze/coffeequeue:latest done
+#14 unpacking to 10.10.2.119:8081/stratalyze/coffeequeue:latest 0.0s done
+#14 DONE 0.1s
+[Pipeline] }
+[Pipeline] // withDockerRegistry
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Docker Image Scan)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ trivy image --format table --output trivy-image-report.html 10.10.2.119:8081/stratalyze/coffeequeue:latest
+2025-11-21T21:09:02Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-11-21T21:09:02Z	INFO	[secret] Secret scanning is enabled
+2025-11-21T21:09:02Z	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2025-11-21T21:09:02Z	INFO	[secret] Please see https://trivy.dev/v0.67/docs/scanner/secret#recommendation for faster secret detection
+2025-11-21T21:09:02Z	INFO	Detected OS	family="alpine" version="3.22.2"
+2025-11-21T21:09:02Z	INFO	[alpine] Detecting vulnerabilities...	os_version="3.22" repository="3.22" pkg_num=77
+2025-11-21T21:09:02Z	INFO	Number of language-specific files	num=1
+2025-11-21T21:09:02Z	INFO	[jar] Detecting vulnerabilities...
+2025-11-21T21:09:02Z	INFO	Table result includes only package filenames. Use '--format json' option to get the full path to the package file.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push Docker Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withDockerRegistry
+Using the existing docker config file.
+Removing blacklisted property: auths
+$ docker login -u admin -p ******** http://10.10.2.119:8081
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+
+WARNING! Your credentials are stored unencrypted in '/var/lib/jenkins/workspace/COFFEEQUEUE_main@tmp/2ce293a3-3d26-4a59-94ce-5ba74f1f1108/config.json'.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/go/credential-store/
+
+Login Succeeded
+[Pipeline] {
+[Pipeline] sh
++ docker push 10.10.2.119:8081/stratalyze/coffeequeue:latest
+The push refers to repository [10.10.2.119:8081/stratalyze/coffeequeue]
+8dd4ceecc63b: Layer already exists
+2d35ebdb57d9: Layer already exists
+604c946e0355: Layer already exists
+8b1399ab8e07: Layer already exists
+58d4eefdec1c: Layer already exists
+92a31736fe1d: Layer already exists
+9458fa8b1216: Layer already exists
+ab080422d7a6: Layer already exists
+b6a3991c44d0: Layer already exists
+a34da1dc7864: Layer already exists
+fedaf60556da: Layer already exists
+d8cb030eff3c: Layer already exists
+2f04cb779520: Layer already exists
+0f358ea2ac67: Pushed
+latest: digest: sha256:e361004ab366102521b62d91b555bf1ce68b16b65f2d410a13226929e93c1882 size: 856
+[Pipeline] }
+[Pipeline] // withDockerRegistry
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy To Kubernetes)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withKubeConfig
+[Pipeline] {
+[Pipeline] sh
++ kubectl version
+Client Version: v1.34.0
+Kustomize Version: v5.7.1
+Server Version: v1.34.0
+[Pipeline] sh
++ kubectl apply -f k8s
+deployment.apps/coffeequeue unchanged
+secret/postgres-secret unchanged
+configmap/postgres-initdb unchanged
+storageclass.storage.k8s.io/local-storage unchanged
+persistentvolume/postgres-local-pv unchanged
+service/postgres-headless unchanged
+statefulset.apps/postgres-db configured
+secret/coffeequeue-secret unchanged
+service/coffeequeue unchanged
+[Pipeline] }
+[kubernetes-cli] kubectl configuration cleaned up
+[Pipeline] // withKubeConfig
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Verify Deployment)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withKubeConfig
+[Pipeline] {
+[Pipeline] sh
++ kubectl get pods
+NAME                           READY   STATUS    RESTARTS   AGE
+coffeequeue-84dbf65cff-7rppj   1/1     Running   0          8m16s
+coffeequeue-84dbf65cff-jkccr   1/1     Running   0          8m16s
+postgres-db-0                  1/1     Running   0          8m16s
+postgres-db-1                  0/1     Pending   0          7m58s
+[Pipeline] sh
++ kubectl get service
+NAME                TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+coffeequeue         ClusterIP   10.96.211.236   <none>        80/TCP     8m17s
+kubernetes          ClusterIP   10.96.0.1       <none>        443/TCP    2d8h
+postgres-headless   ClusterIP   None            <none>        5432/TCP   8m17s
+[Pipeline] }
+[kubernetes-cli] kubectl configuration cleaned up
+[Pipeline] // withKubeConfig
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] emailext
+Sending email to: ahmedbellok24@gmail.com
+[Pipeline] cleanWs
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] done
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
